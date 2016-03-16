@@ -2,7 +2,7 @@ require "./node"
 require "./result"
 
 module Delimiter
-  class Tree
+  class Tree(T)
     getter :root
 
     def initialize(@delimiter = "/")
@@ -22,15 +22,15 @@ module Delimiter
     end
 
     def find(path : String)
-      result = Result.new
+      result = Result(T).new
       
       pos = @root
       parts = path.split(@delimiter)
       parts.each do |part|
         @found = false
-        #if pos.children.has_key? "*"
-        #  result.payload << pos.payload
-        #end
+        if pos.children.has_key? "*"
+          result.payload << pos.children["*"].payload
+        end
         if pos.children.has_key? part
           @found = true
           pos = pos.children[part]
@@ -46,7 +46,7 @@ module Delimiter
         end
       end
       result.found = @found
-      result.payload = pos.payload if @found
+      result.payload << pos.payload if @found
       result
     end
   end

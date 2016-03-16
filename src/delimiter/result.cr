@@ -1,12 +1,12 @@
 module Delimiter
-  class Result
+  class Result(T)
     getter params
     property payload
     property found
 
     def initialize
       @params = {} of String => String
-      @payload = nil
+      @payload = [] of T
       @found = false
     end
 
