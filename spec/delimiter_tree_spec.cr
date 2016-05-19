@@ -3,19 +3,19 @@ require "./spec_helper"
 describe Delimiter::Tree do
 
   it "builds a tree" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.find("/").found.should be_true
   end
 
   it "returns the payload" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.find("/").payload.should eq [:root]
   end
 
   it "returns an array of payload" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.add "/*", :all_children
     tree.add "/products", :products
@@ -25,7 +25,7 @@ describe Delimiter::Tree do
   end
   
   it "supports params" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.add "/:test", :test
     result = tree.find "/1234"
@@ -33,7 +33,7 @@ describe Delimiter::Tree do
   end
 
   it "found? is false if not found" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.add "/products", :products
     tree.add "/products/:id", :product
@@ -42,7 +42,7 @@ describe Delimiter::Tree do
   end
 
   it "found? is true if found" do
-    tree = Delimiter::Tree(Nil | Symbol).new("/")
+    tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
     tree.add "/products", :products
     tree.add "/products/:id", :product

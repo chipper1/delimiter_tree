@@ -1,11 +1,11 @@
 module Delimiter
-  class Node
-    getter :key
-    property :payload
-    property :children
+  class Node(T)
+    getter key
+    property payload : T?
+    property children
 
-    def initialize(@key : String, @payload : Symbol? = nil)
-      @children = {} of String => Node
+    def initialize(@key : String, @payload : T? = nil)
+      @children = {} of String => Node(T)
     end
 
   end

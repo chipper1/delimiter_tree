@@ -3,18 +3,19 @@ require "./result"
 
 module Delimiter
   class Tree(T)
-    getter :root
-
-    def initialize(@delimiter = "/")
-      @root = Node.new("")
+    property root : Node(T)
+    property delimiter : String
+    
+    def initialize(@delimiter : String = "/")
+      @root = Node(T).new("")
     end
     
-    def add(path : String, payload : Symbol)
+    def add(path : String, payload : T)
       pos = @root
       parts = path.split(@delimiter)
       parts.each do |key|
         unless pos.children.has_key? key
-          pos.children[key] = Node.new(key)
+          pos.children[key] = Node(T).new(key)
         end
         pos = pos.children[key]
       end

@@ -6,7 +6,7 @@ module Delimiter
 
     def initialize
       @params = {} of String => String
-      @payload = [] of T
+      @payload = [] of T?
       @found = false
     end
 
