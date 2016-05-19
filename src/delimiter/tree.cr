@@ -9,7 +9,7 @@ module Delimiter
       @root = Node.new("")
     end
     
-    def add(path : String, payload)
+    def add(path : String, payload : Symbol)
       pos = @root
       parts = path.split(@delimiter)
       parts.each do |key|
@@ -45,7 +45,7 @@ module Delimiter
           end
         end
       end
-      result.found = @found
+      result.found = (@found == true)
       result.payload << pos.payload if @found
       result
     end

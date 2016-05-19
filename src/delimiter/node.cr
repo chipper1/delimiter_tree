@@ -4,7 +4,7 @@ module Delimiter
     property :payload
     property :children
 
-    def initialize(@key : String, @payload = nil)
+    def initialize(@key : String, @payload : Symbol? = nil)
       @children = {} of String => Node
     end
 
