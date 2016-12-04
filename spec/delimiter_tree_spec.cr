@@ -23,7 +23,7 @@ describe Delimiter::Tree do
     tree.add "/products/:id", :product
     tree.find("/products/2").payload.should eq [:all_children, :all_products, :product]
   end
-  
+
   it "supports params" do
     tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
@@ -49,5 +49,4 @@ describe Delimiter::Tree do
     result = tree.find "/products"
     result.found?.should be_true
   end
-  
 end

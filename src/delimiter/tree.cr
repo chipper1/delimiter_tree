@@ -5,11 +5,11 @@ module Delimiter
   class Tree(T)
     property root : Node(T)
     property delimiter : String
-    
+
     def initialize(@delimiter : String = "/")
       @root = Node(T).new("")
     end
-    
+
     def add(path : String, payload : T)
       pos = @root
       parts = path.split(@delimiter)
@@ -19,18 +19,18 @@ module Delimiter
         end
         pos = pos.children[key]
       end
-      pos.payload = payload
+      pos.payload << payload
     end
 
     def find(path : String)
       result = Result(T).new
-      
+
       pos = @root
       parts = path.split(@delimiter)
       parts.each do |part|
         @found = false
         if pos.children.has_key? "*"
-          result.payload << pos.children["*"].payload
+          pos.children["*"].payload.each {|p| result.payload << p}
         end
         if pos.children.has_key? part
           @found = true
@@ -47,7 +47,7 @@ module Delimiter
         end
       end
       result.found = (@found == true)
-      result.payload << pos.payload if @found
+      pos.payload.each {|p| result.payload << p}
       result
     end
   end

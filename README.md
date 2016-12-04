@@ -15,7 +15,6 @@ as the specific payload for the final matching string.
 
 ## Installation
 
-
 Add this to your application's `shard.yml`:
 
 ```yaml
@@ -51,7 +50,7 @@ puts result.params
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/delimiter_tree/fork )
+1. Fork it ( https://github.com/drujensen/delimiter_tree/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -59,4 +58,4 @@ puts result.params
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Dru Jensen - creator, maintainer
+- [drujensen](https://github.com/drujensen) Dru Jensen - creator, maintainer
