@@ -31,6 +31,7 @@ module Delimiter
         @found = false
         if pos.children.has_key? "*"
           pos.children["*"].payload.each {|p| result.payload << p}
+          @found = !result.payload.empty?
         end
         if pos.children.has_key? part
           @found = true
