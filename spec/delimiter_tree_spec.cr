@@ -58,4 +58,10 @@ describe Delimiter::Tree do
     result = tree.find "/products"
     result.found?.should be_true
   end
+
+  it "should not duplicate payload" do
+    tree = Delimiter::Tree(Symbol).new
+    tree.add "/*", :all
+    tree.find("/test/part/hop").payload.should eq [:all] # FAIL here
+  end
 end

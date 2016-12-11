@@ -26,13 +26,19 @@ module Delimiter
       result = Result(T).new
 
       pos = @root
+      last_pos = nil
       parts = path.split(@delimiter)
       parts.each do |part|
         @found = false
-        if pos.children.has_key? "*"
+
+        # check if this pos has any wildcards and add them.  
+        # only add this if its not already been added last_pos.
+        if pos.children.has_key?("*") && pos != last_pos
           pos.children["*"].payload.each {|p| result.payload << p}
           @found = !result.payload.empty?
+          last_pos = pos
         end
+        
         if pos.children.has_key? part
           @found = true
           pos = pos.children[part]
