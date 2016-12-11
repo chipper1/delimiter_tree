@@ -59,3 +59,4 @@ puts result.params
 ## Contributors
 
 - [drujensen](https://github.com/drujensen) Dru Jensen - creator, maintainer
+- [TechMagister](https://github.com/TechMagister) Arnaud Fernandés
