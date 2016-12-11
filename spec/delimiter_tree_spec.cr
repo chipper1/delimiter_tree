@@ -41,6 +41,15 @@ describe Delimiter::Tree do
     result.found?.should be_false
   end
 
+  it "found? is true if found with *" do
+    tree = Delimiter::Tree(Symbol).new
+    tree.add "/*", :root
+    result = tree.find "/1234"
+
+    result.payload.should eq [:root]
+    result.found?.should be_true
+  end
+
   it "found? is true if found" do
     tree = Delimiter::Tree(Symbol).new
     tree.add "/", :root
