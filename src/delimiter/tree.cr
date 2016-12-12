@@ -30,10 +30,10 @@ module Delimiter
 
       parts = path.split(@delimiter)
       parts.each do |part|
-        if pos.children.has_key?("*") 
+        if pos.children.has_key?("*")
           pos.children["*"].payload.each {|p| result.payload << p}
         end
-        
+
         if pos.children.has_key? part
           pos = pos.children[part]
         else
@@ -45,7 +45,7 @@ module Delimiter
           end
         end
 
-        pos == last_pos ?  break :(last_pos = pos)
+        pos == last_pos ?  break : (last_pos = pos)
       end
       pos.payload.each {|p| result.payload << p}
       result.found = !result.payload.empty?
