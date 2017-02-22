@@ -33,7 +33,7 @@ string.
 ```crystal
 require "delimiter_tree"
 
-tree = Delimiter::Tree.new("/")
+tree = Delimiter::Tree(Symbol).new("/")
 tree.add "/*", :all_children
 tree.add "/products", :products
 tree.add "/products/:id", :specific_product
